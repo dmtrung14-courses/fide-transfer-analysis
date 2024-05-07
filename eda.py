@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import matplotlib.cm as cm
-
+from scipy.stats import gaussian_kde, norm
 
 data = pd.read_csv('data_rated.csv')
 data = data.iloc[:, 1:]
@@ -91,9 +91,28 @@ def standard_deviation(data):
     print("std of Ratings - All Federations:", other_std)
 
 
+def kde_rating(data):
+    plt.figure(figsize=(10, 6))
+    sns.kdeplot(data['Rating'], fill=True)
+    normal_mean = data['Rating'].mean()
+    normal_std = data['Rating'].std()
+    x_range = np.linspace(data["Rating"].min(), data["Rating"].max(), 1000)
+    normal_dist = norm.pdf(x_range, loc=normal_mean, scale=normal_std)
+    plt.plot(x_range, normal_dist, 'r-', label='Normal Distribution')
+
+    # Plot vertical lines for mean and mean +/- std
+    plt.axvline(normal_mean, color='g', linestyle='--', label='Data Mean')
+    # plt.axvline(normal_mean + normal_std, color='b', linestyle='--', label='Data Mean + Std')
+    # plt.axvline(normal_mean - normal_std, color='b', linestyle='--', label='Data Mean - Std')
+    plt.xlabel('Rating')
+    plt.ylabel('Density')
+    plt.title('Kernel Density Estimation of Player Ratings')
+    plt.savefig('./output/kde_rating.png')
+
 if __name__=="__main__":
     number_of_transfers(data)
     top_20_average_ratings(data)
     top_20_players(data)
     usa_vs_rest_of_world(data)
     standard_deviation(data)
+    kde_rating(data)
