@@ -1,5 +1,5 @@
 # FIDE Transfers Analysis
-Final Project for UMass STATS 516 class
+Final Project for UMass STATS 516 class. [Paper](https://github.com/dmtrung14-courses/fide-transfer-analysis/blob/main/FIDE-transfer-analysis.pdf)
 
 ## Abstract
 
