@@ -9,4 +9,4 @@ In this report, we explore the transfer trends of chess players worldwide. We us
 - [x] Fast Parallelized data fetching using multithreading
 - [x] Data clean up using pandas, numpy, and BeautifulSoup4
 - [x] Graphing and exploratory data analysis using matplotlib
-- [x] Final paper here: 
+- [x] Final paper here: https://github.com/dmtrung14-courses/fide-transfer-analysis/blob/main/FIDE-transfer-analysis.pdf
